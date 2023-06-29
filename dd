@@ -1,0 +1,18 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("rr", "DarkTheme")
+ 
+local Tab = Window:NewTab("mian")
+local Section = Tab:NewSection("d")
+ 
+Section:NewButton("ButtonText", "ButtonInfo",
+     function()
+         for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+             if v:IsA("Part") or v:IsA("MeshPart") then
+                 if game:GetService("Players").LocalPlayer:DistanceFromCharacter(v.Position) <= 50 then
+                     if v:FindFirstChild("ProximityPrompt") then
+                         fireproximityprompt(v.ProximityPrompt)
+                     end
+                 end
+             end
+         end
+     end)
